@@ -290,6 +290,7 @@
   #privacy h3{font-family:'Oswald', sans-serif; font-size:13px; letter-spacing:.08em; text-transform:uppercase; color:var(--navy); margin:18px 0 4px;}
   #privacy p{margin:0 0 8px;}
   footer a{color:var(--gold-bright);}
+  .footer-motto{font-family:'Playfair Display', serif; font-weight:900; font-size:21px; letter-spacing:.02em; color:var(--gold-bright); margin:0 0 10px;}
   /* ---------- Islamification Corner ---------- */
   .corner-teaser{
     position:absolute; top:14px; right:max(20px, calc((100% - var(--maxw)) / 2 + 20px));
@@ -368,6 +369,22 @@
   .sources-box li:target{background:#FFF6D9;}
   .corner-foot{font-size:12px; color:var(--ink-soft); font-style:italic; margin:12px 0 0;}
   @media (max-width:800px){ .corner-grid{grid-template-columns:minmax(0,1fr);} .corner-box{padding:16px 14px;} .kill-row{grid-template-columns:78px 1fr;} .kill-n{font-size:26px;} }
+  .wx{color:var(--ink); background:#fff; border:1px solid var(--rule); border-top:4px solid var(--navy); border-radius:3px; padding:18px 20px;}
+  .wx-now{display:flex; align-items:center; gap:18px; flex-wrap:wrap;}
+  .wx-icon{font-size:54px; line-height:1;}
+  .wx-temp{font-family:'Playfair Display', serif; font-weight:900; font-size:48px; color:var(--navy); line-height:1;}
+  .wx-cond{font-family:'Oswald', sans-serif; font-size:15px; letter-spacing:.06em; text-transform:uppercase; color:var(--red-2); margin-top:4px;}
+  .wx-extra{font-size:13.5px; color:var(--ink-soft); margin-top:2px;}
+  .wx-place{margin-left:auto; text-align:right; font-family:'Oswald', sans-serif; font-size:13px; letter-spacing:.06em; text-transform:uppercase; color:var(--navy);}
+  .wx-place span{font-family:'PT Serif', serif; text-transform:none; letter-spacing:0; color:var(--ink-soft); font-size:12px;}
+  .wx-days{display:grid; grid-template-columns:repeat(5,1fr); gap:8px; margin-top:16px; border-top:1px solid var(--cream-2); padding-top:14px;}
+  .wx-day{text-align:center; background:var(--cream); border-radius:3px; padding:8px 4px;}
+  .wx-dn{font-family:'Oswald', sans-serif; font-size:12.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--navy);}
+  .wx-di{font-size:26px; margin:2px 0;}
+  .wx-hl{font-size:14px;} .wx-hl b{color:var(--red);}
+  .wx-pp{font-size:12px; color:var(--ink-soft); min-height:16px;}
+  .wx-src{font-size:12px; color:var(--ink-soft); margin:12px 0 0;}
+  @media (max-width:560px){ .wx-days{grid-template-columns:repeat(3,1fr);} .wx-place{margin-left:0; text-align:left;} }
   footer{
     background:var(--navy-2); color:var(--cream); text-align:center;
     padding:26px 20px; font-family:'Oswald', sans-serif; font-size:12px; letter-spacing:.05em;
@@ -998,12 +1015,52 @@
   <section id="weather">
     <h2 class="section-head"><svg class="eagle" viewBox="0 0 24 24"><path d="M12 3c.6 1 1 2 1 3 3-2.5 6-3 10-2-3 1.5-5.5 3-7 5 3 0 5.5 1 8 3-3.5.5-6 .3-8-1 .5 2 .3 4-1 6-1-1.5-1.8-3-2-4.5-.4 2-1 3.7-2 5-1-1.3-1.6-3-2-5-.2 1.5-1 3-2 4.5-1.3-2-1.5-4-1-6-2 1.3-4.5 1.5-8 1 2.5-2 5-3 8-3-1.5-2-4-3.5-7-5 4-1 7-.5 10 2 0-1 .4-2 1-3z"/></svg> Weather</h2>
     <p class="section-sub">Current conditions and forecast for Chicopee, Massachusetts.</p>
-    <div class="weather-box">
-      <a class="weatherwidget-io" href="https://forecast7.com/en/42d15n72d61/chicopee/" data-label_1="CHICOPEE" data-label_2="WEATHER" data-theme="original">CHICOPEE WEATHER</a>
-      <script>
-        !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
-      </script>
+    <div class="weather-box wx" id="wx">
+      <div class="wx-now">
+        <div class="wx-icon" id="wx-icon">&#9925;</div>
+        <div>
+          <div class="wx-temp"><span id="wx-temp">--</span>&deg;F</div>
+          <div class="wx-cond" id="wx-cond">Loading current conditions&hellip;</div>
+          <div class="wx-extra" id="wx-extra"></div>
+        </div>
+        <div class="wx-place">Chicopee, MA<br><span id="wx-updated"></span></div>
+      </div>
+      <div class="wx-days" id="wx-days"></div>
+      <p class="wx-src">Data: <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a> &middot; <a href="https://forecast.weather.gov/MapClick.php?lat=42.1487&amp;lon=-72.6079" target="_blank" rel="noopener">Full National Weather Service forecast</a></p>
     </div>
+    <script>
+      (function(){
+        var W = {0:['Clear','\u2600\uFE0F'],1:['Mostly clear','\uD83C\uDF24\uFE0F'],2:['Partly cloudy','\u26C5'],3:['Overcast','\u2601\uFE0F'],
+          45:['Fog','\uD83C\uDF2B\uFE0F'],48:['Freezing fog','\uD83C\uDF2B\uFE0F'],51:['Light drizzle','\uD83C\uDF26\uFE0F'],53:['Drizzle','\uD83C\uDF26\uFE0F'],55:['Heavy drizzle','\uD83C\uDF27\uFE0F'],
+          56:['Freezing drizzle','\uD83C\uDF27\uFE0F'],57:['Freezing drizzle','\uD83C\uDF27\uFE0F'],61:['Light rain','\uD83C\uDF26\uFE0F'],63:['Rain','\uD83C\uDF27\uFE0F'],65:['Heavy rain','\uD83C\uDF27\uFE0F'],
+          66:['Freezing rain','\uD83C\uDF27\uFE0F'],67:['Freezing rain','\uD83C\uDF27\uFE0F'],71:['Light snow','\uD83C\uDF28\uFE0F'],73:['Snow','\uD83C\uDF28\uFE0F'],75:['Heavy snow','\u2744\uFE0F'],77:['Snow grains','\uD83C\uDF28\uFE0F'],
+          80:['Rain showers','\uD83C\uDF26\uFE0F'],81:['Rain showers','\uD83C\uDF27\uFE0F'],82:['Heavy showers','\uD83C\uDF27\uFE0F'],85:['Snow showers','\uD83C\uDF28\uFE0F'],86:['Snow showers','\u2744\uFE0F'],
+          95:['Thunderstorms','\u26C8\uFE0F'],96:['Thunderstorms, hail','\u26C8\uFE0F'],99:['Thunderstorms, hail','\u26C8\uFE0F']};
+        function w(c){ return W[c] || ['\u2014','\u26C5']; }
+        var url = 'https://api.open-meteo.com/v1/forecast?latitude=42.1487&longitude=-72.6079' +
+          '&current=temperature_2m,apparent_temperature,relative_humidity_2m,weather_code,wind_speed_10m' +
+          '&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max' +
+          '&temperature_unit=fahrenheit&wind_speed_unit=mph&timezone=America%2FNew_York&forecast_days=6';
+        fetch(url).then(function(r){ return r.json(); }).then(function(d){
+          var c = d.current, now = w(c.weather_code);
+          document.getElementById('wx-temp').textContent = Math.round(c.temperature_2m);
+          document.getElementById('wx-icon').textContent = now[1];
+          document.getElementById('wx-cond').textContent = now[0];
+          document.getElementById('wx-extra').textContent = 'Feels like ' + Math.round(c.apparent_temperature) + '\u00B0 \u00B7 Wind ' + Math.round(c.wind_speed_10m) + ' mph \u00B7 Humidity ' + c.relative_humidity_2m + '%';
+          document.getElementById('wx-updated').textContent = 'Updated ' + new Date().toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'});
+          var dd = d.daily, html = '';
+          for (var k = 1; k < dd.time.length; k++){
+            var day = new Date(dd.time[k] + 'T12:00:00').toLocaleDateString('en-US',{weekday:'short'}), x = w(dd.weather_code[k]);
+            html += '<div class="wx-day"><div class="wx-dn">' + day + '</div><div class="wx-di">' + x[1] + '</div>' +
+              '<div class="wx-hl"><b>' + Math.round(dd.temperature_2m_max[k]) + '\u00B0</b> ' + Math.round(dd.temperature_2m_min[k]) + '\u00B0</div>' +
+              '<div class="wx-pp">' + (dd.precipitation_probability_max[k] != null ? '\uD83D\uDCA7 ' + dd.precipitation_probability_max[k] + '%' : '') + '</div></div>';
+          }
+          document.getElementById('wx-days').innerHTML = html;
+        }).catch(function(){
+          document.getElementById('wx-cond').innerHTML = 'Weather is unavailable right now. <a href="https://forecast.weather.gov/MapClick.php?lat=42.1487&lon=-72.6079" target="_blank" rel="noopener">See the National Weather Service forecast</a>.';
+        });
+      })();
+    </script>
   </section>
 
   <div class="section-divider"></div>
@@ -1046,7 +1103,7 @@
     <h3>Interest buttons</h3>
     <p>The &ldquo;coming soon&rdquo; Donate and Merch buttons record only which button was clicked. No name, email, or other personal information is collected.</p>
     <h3>Third-party services</h3>
-    <p>This site is hosted by Netlify, which keeps standard server logs. Fonts are loaded from Google Fonts, and the weather panel is provided by weatherwidget.io. Links to outside websites, including Rumble, news sites, and shops, are governed by those sites&rsquo; own privacy policies.</p>
+    <p>This site is hosted by Netlify, which keeps standard server logs. Fonts are loaded from Google Fonts, and weather data comes from Open-Meteo. Links to outside websites, including Rumble, news sites, and shops, are governed by those sites&rsquo; own privacy policies.</p>
     <h3>Questions</h3>
     <p>Write to truthwhale1776@gmail.com.</p>
   </section>
@@ -1054,6 +1111,7 @@
 </main>
 
 <footer>
+  <div class="footer-motto">Freedom is not Free.</div>
   Truth Whale 1776 &middot; Baystatejim95 on Rumble &middot; &copy; <span id="yr"></span> &middot; <a href="#privacy">Privacy &amp; Disclosures</a><br />
   Truth Whale 1776 is a participant in the Amazon Services LLC Associates Program, an affiliate advertising program designed to provide a means for sites to earn advertising fees by advertising and linking to Amazon.com.
 </footer>
