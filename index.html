@@ -265,6 +265,11 @@
   form.contact-form label{display:flex; flex-direction:column; gap:5px;}
   form.contact-form input, form.contact-form textarea{width:100%; box-sizing:border-box; margin:0;}
 
+  .affiliate-note{font-size:13px; color:var(--ink-soft); background:var(--cream-2); border-left:3px solid var(--gold); padding:8px 12px; margin:-12px 0 24px; border-radius:2px;}
+  #privacy{font-size:14px; color:var(--ink-soft);}
+  #privacy h3{font-family:'Oswald', sans-serif; font-size:13px; letter-spacing:.08em; text-transform:uppercase; color:var(--navy); margin:18px 0 4px;}
+  #privacy p{margin:0 0 8px;}
+  footer a{color:var(--gold-bright);}
   footer{
     background:var(--navy-2); color:var(--cream); text-align:center;
     padding:26px 20px; font-family:'Oswald', sans-serif; font-size:12px; letter-spacing:.05em;
@@ -582,6 +587,7 @@
   <section id="shop">
     <h2 class="section-head"><svg class="eagle" viewBox="0 0 24 24"><path d="M12 3c.6 1 1 2 1 3 3-2.5 6-3 10-2-3 1.5-5.5 3-7 5 3 0 5.5 1 8 3-3.5.5-6 .3-8-1 .5 2 .3 4-1 6-1-1.5-1.8-3-2-4.5-.4 2-1 3.7-2 5-1-1.3-1.6-3-2-5-.2 1.5-1 3-2 4.5-1.3-2-1.5-4-1-6-2 1.3-4.5 1.5-8 1 2.5-2 5-3 8-3-1.5-2-4-3.5-7-5 4-1 7-.5 10 2 0-1 .4-2 1-3z"/></svg> The General Store</h2>
     <p class="section-sub">A few things worth owning.</p>
+    <p class="affiliate-note">As an Amazon Associate, I earn from qualifying purchases. Some links in this section are affiliate links, so if you buy through them, Truth Whale 1776 may earn a small commission at no extra cost to you.</p>
     <div class="card-grid">
 
       <div class="shop-card">
@@ -589,8 +595,8 @@
         <p>Cross and other fine rollerballs, plus refills so the good pen never runs dry.</p>
         <div class="links">
           <a class="btn outline" href="https://www.cross.com/collections/rollerball-pens" target="_blank" rel="noopener">Shop Cross rollerballs</a>
-          <a class="btn outline" href="https://www.amazon.com/s?k=rollerball+pen" target="_blank" rel="noopener">Browse on Amazon</a>
-          <a class="btn outline" href="https://www.amazon.com/s?k=cross+rollerball+refills" target="_blank" rel="noopener">Refills on Amazon</a>
+          <a class="btn outline" href="https://www.amazon.com/s?k=rollerball+pen&amp;tag=truthwhale177-20" target="_blank" rel="sponsored noopener">Browse on Amazon</a>
+          <a class="btn outline" href="https://www.amazon.com/s?k=cross+rollerball+refills&amp;tag=truthwhale177-20" target="_blank" rel="sponsored noopener">Refills on Amazon</a>
         </div>
       </div>
 
@@ -598,8 +604,8 @@
         <h3>Coffee &amp; tea</h3>
         <p>Specialty roasts and loose-leaf teas worth the extra minute.</p>
         <div class="links">
-          <a class="btn outline" href="https://www.amazon.com/s?k=specialty+coffee+beans" target="_blank" rel="noopener">Specialty coffee</a>
-          <a class="btn outline" href="https://www.amazon.com/s?k=loose+leaf+tea" target="_blank" rel="noopener">Specialty tea</a>
+          <a class="btn outline" href="https://www.amazon.com/s?k=specialty+coffee+beans&amp;tag=truthwhale177-20" target="_blank" rel="sponsored noopener">Specialty coffee</a>
+          <a class="btn outline" href="https://www.amazon.com/s?k=loose+leaf+tea&amp;tag=truthwhale177-20" target="_blank" rel="sponsored noopener">Specialty tea</a>
         </div>
       </div>
 
@@ -607,8 +613,8 @@
         <h3>Patriotic coffee mugs</h3>
         <p>Sturdy mugs and flags for the desk, the porch, and the truck.</p>
         <div class="links">
-          <a class="btn outline" href="https://www.amazon.com/s?k=patriotic+coffee+mug" target="_blank" rel="noopener">Patriotic mugs</a>
-          <a class="btn outline" href="https://www.amazon.com/s?k=american+flag" target="_blank" rel="noopener">American flags</a>
+          <a class="btn outline" href="https://www.amazon.com/s?k=patriotic+coffee+mug&amp;tag=truthwhale177-20" target="_blank" rel="sponsored noopener">Patriotic mugs</a>
+          <a class="btn outline" href="https://www.amazon.com/s?k=american+flag&amp;tag=truthwhale177-20" target="_blank" rel="sponsored noopener">American flags</a>
         </div>
       </div>
 
@@ -616,7 +622,7 @@
         <h3>Chess sets</h3>
         <p>Handsome boards for the front room and a game with the neighbors.</p>
         <div class="links">
-          <a class="btn outline" href="https://www.amazon.com/s?k=chess+set" target="_blank" rel="noopener">Browse chess sets</a>
+          <a class="btn outline" href="https://www.amazon.com/s?k=chess+set&amp;tag=truthwhale177-20" target="_blank" rel="sponsored noopener">Browse chess sets</a>
           <a class="btn outline" href="https://new.uschess.org" target="_blank" rel="noopener">U.S. Chess Federation</a>
           <a class="btn outline" href="https://www.gameknot.com" target="_blank" rel="noopener">Play on GameKnot</a>
           <a class="btn outline" href="https://www.chess.com" target="_blank" rel="noopener">Play on Chess.com</a>
@@ -627,7 +633,7 @@
         <h3>Truth Whale merch</h3>
         <p>Show your colors &mdash; mugs, shirts, and stickers with the Truth Whale mark.</p>
         <div class="links">
-          <a class="btn outline" href="#donate">See the merch shop</a>
+          <button type="button" class="btn outline interest-btn" data-interest="merch" style="cursor:pointer;">Coming soon &mdash; I'd buy one</button>
         </div>
       </div>
 
@@ -639,7 +645,7 @@
   <!-- NEWS & VOICES -->
   <section id="voices">
     <h2 class="section-head"><svg class="eagle" viewBox="0 0 24 24"><path d="M12 3c.6 1 1 2 1 3 3-2.5 6-3 10-2-3 1.5-5.5 3-7 5 3 0 5.5 1 8 3-3.5.5-6 .3-8-1 .5 2 .3 4-1 6-1-1.5-1.8-3-2-4.5-.4 2-1 3.7-2 5-1-1.3-1.6-3-2-5-.2 1.5-1 3-2 4.5-1.3-2-1.5-4-1-6-2 1.3-4.5 1.5-8 1 2.5-2 5-3 8-3-1.5-2-4-3.5-7-5 4-1 7-.5 10 2 0-1 .4-2 1-3z"/></svg> News &amp; Voices</h2>
-    <p class="section-sub">A reading list and a listening list, swap in your own favorites any time.</p>
+    <p class="section-sub">A reading list and a listening list.</p>
     <div class="voices-cols">
       <div>
         <h3>News</h3>
@@ -681,9 +687,9 @@
   <!-- WEATHER -->
   <section id="weather">
     <h2 class="section-head"><svg class="eagle" viewBox="0 0 24 24"><path d="M12 3c.6 1 1 2 1 3 3-2.5 6-3 10-2-3 1.5-5.5 3-7 5 3 0 5.5 1 8 3-3.5.5-6 .3-8-1 .5 2 .3 4-1 6-1-1.5-1.8-3-2-4.5-.4 2-1 3.7-2 5-1-1.3-1.6-3-2-5-.2 1.5-1 3-2 4.5-1.3-2-1.5-4-1-6-2 1.3-4.5 1.5-8 1 2.5-2 5-3 8-3-1.5-2-4-3.5-7-5 4-1 7-.5 10 2 0-1 .4-2 1-3z"/></svg> Weather</h2>
-    <p class="section-sub">Drop in your town below (edit the data-location attribute in the code) &mdash; no account or API key needed.</p>
+    <p class="section-sub">Current conditions and forecast for Chicopee, Massachusetts.</p>
     <div class="weather-box">
-      <a class="weatherwidget-io" href="https://forecast7.com/en/42d36n71d06/boston/" data-label_1="BOSTON" data-label_2="WEATHER" data-theme="original">BOSTON WEATHER</a>
+      <a class="weatherwidget-io" href="https://forecast7.com/en/42d15n72d61/chicopee/" data-label_1="CHICOPEE" data-label_2="WEATHER" data-theme="original">CHICOPEE WEATHER</a>
       <script>
         !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
       </script>
@@ -696,8 +702,8 @@
   <section id="donate">
     <div class="donate-box">
       <h2 class="section-head"><svg class="eagle" viewBox="0 0 24 24"><path d="M12 3c.6 1 1 2 1 3 3-2.5 6-3 10-2-3 1.5-5.5 3-7 5 3 0 5.5 1 8 3-3.5.5-6 .3-8-1 .5 2 .3 4-1 6-1-1.5-1.8-3-2-4.5-.4 2-1 3.7-2 5-1-1.3-1.6-3-2-5-.2 1.5-1 3-2 4.5-1.3-2-1.5-4-1-6-2 1.3-4.5 1.5-8 1 2.5-2 5-3 8-3-1.5-2-4-3.5-7-5 4-1 7-.5 10 2 0-1 .4-2 1-3z"/></svg> Support the Whale</h2>
-      <p>Keep the broadcasts running and the lights on. Every bit helps.</p>
-      <a class="btn" href="#" style="background:#fff; color:var(--red); border-color:#fff;">Donate now (link your donation platform here)</a>
+      <p>Keep the broadcasts running and the lights on. Donations are coming soon &mdash; click below to let us know you'd give, and we'll open them up.</p>
+      <button type="button" class="btn interest-btn" data-interest="donate" style="background:#fff; color:var(--red); border-color:#fff; cursor:pointer;">Donations coming soon &mdash; I'd support this</button>
     </div>
   </section>
 
@@ -717,10 +723,29 @@
     </form>
   </section>
 
+  <div class="section-divider"></div>
+
+  <!-- PRIVACY -->
+  <section id="privacy">
+    <h2 class="section-head" style="font-size:24px;">Privacy &amp; Disclosures</h2>
+    <p><em>Last updated September 2026.</em></p>
+    <h3>Affiliate links</h3>
+    <p>As an Amazon Associate, I earn from qualifying purchases. Truth Whale 1776 is a participant in the Amazon Services LLC Associates Program. When you click an Amazon link on this site, Amazon may place a cookie in your browser so that qualifying purchases can be credited to this site. Prices are not affected.</p>
+    <h3>Contact form</h3>
+    <p>If you send a message through the Write In form, your name, email address, and message are delivered by Formspree to truthwhale1776@gmail.com. They are used only to read and reply to your message and are never sold or shared.</p>
+    <h3>Interest buttons</h3>
+    <p>The &ldquo;coming soon&rdquo; Donate and Merch buttons record only which button was clicked. No name, email, or other personal information is collected.</p>
+    <h3>Third-party services</h3>
+    <p>This site is hosted by Netlify, which keeps standard server logs. Fonts are loaded from Google Fonts, and the weather panel is provided by weatherwidget.io. Links to outside websites, including Rumble, news sites, and shops, are governed by those sites&rsquo; own privacy policies.</p>
+    <h3>Questions</h3>
+    <p>Write to truthwhale1776@gmail.com.</p>
+  </section>
+
 </main>
 
 <footer>
-  Truth Whale 1776 &middot; Baystatejim95 on Rumble &middot; &copy; <span id="yr"></span>
+  Truth Whale 1776 &middot; Baystatejim95 on Rumble &middot; &copy; <span id="yr"></span> &middot; <a href="#privacy">Privacy &amp; Disclosures</a><br />
+  Truth Whale 1776 is a participant in the Amazon Services LLC Associates Program, an affiliate advertising program designed to provide a means for sites to earn advertising fees by advertising and linking to Amazon.com.
 </footer>
 
 <script>
@@ -942,5 +967,26 @@ function showState(abbr, party){
 
 </script>
 
+<!-- Hidden form so Netlify records Donate / Merch interest clicks (see Forms > interest) -->
+<form name="interest" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input type="text" name="item" />
+  <input type="text" name="page" />
+  <input type="text" name="bot-field" />
+</form>
+<script>
+  document.querySelectorAll('.interest-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      if (btn.dataset.sent) return;
+      btn.dataset.sent = '1';
+      var body = new URLSearchParams({'form-name':'interest', item: btn.dataset.interest, page: location.hostname});
+      fetch('/', {method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body: body.toString()})
+        .catch(function(){});
+      btn.textContent = 'Thank you \u2014 noted!';
+      btn.disabled = true;
+      btn.style.cursor = 'default';
+      btn.style.opacity = '.85';
+    });
+  });
+</script>
 </body>
 </html>
