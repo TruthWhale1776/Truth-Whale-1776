@@ -124,8 +124,6 @@
     transition:background .15s ease;
   }
   .btn:hover{background:var(--red-2);}
-  .btn.outline{background:transparent; color:var(--navy); border-color:var(--navy);}
-  .btn.outline:hover{background:var(--navy); color:#fff; border-color:var(--gold);}
 
   /* ---------- civic desk / map ---------- */
   .state-map{width:100%; height:auto; margin-bottom:22px;}
@@ -301,6 +299,18 @@
   .corner-grid{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:22px; align-items:start;}
   .corner-box{background:#fff; border:1px solid var(--rule); border-top:4px solid var(--navy); border-radius:3px; padding:18px 20px;}
   .corner-box h3{font-family:'Playfair Display', serif; font-size:20px; color:var(--navy); margin:0 0 2px;}
+  .essential{color:var(--red); letter-spacing:.02em;}
+  .btn.outline{
+    --cut:9px; position:relative; z-index:0; border:none !important; background:var(--cranberry) !important;
+    color:var(--navy) !important; padding:11px 17px;
+    clip-path:polygon(var(--cut) 0, calc(100% - var(--cut)) 0, 100% var(--cut), 100% calc(100% - var(--cut)), calc(100% - var(--cut)) 100%, var(--cut) 100%, 0 calc(100% - var(--cut)), 0 var(--cut));
+  }
+  .btn.outline::before{
+    content:""; position:absolute; inset:1.5px; z-index:-1; background:#fff; transition:background .15s ease;
+    clip-path:polygon(calc(var(--cut) - .6px) 0, calc(100% - var(--cut) + .6px) 0, 100% calc(var(--cut) - .6px), 100% calc(100% - var(--cut) + .6px), calc(100% - var(--cut) + .6px) 100%, calc(var(--cut) - .6px) 100%, 0 calc(100% - var(--cut) + .6px), 0 calc(var(--cut) - .6px));
+  }
+  .btn.outline:hover{color:#fff !important;}
+  .btn.outline:hover::before{background:var(--cranberry);}
   .corner-h3b{margin-top:22px !important; font-size:17px !important;}
   .corner-note{font-size:12.5px; color:var(--ink-soft); font-style:italic; margin:0 0 10px;}
   .kill-list{list-style:none; margin:0; padding:0;}
@@ -811,12 +821,12 @@
         </div>
         <p class="corner-note">Opens LegiScan with bills mentioning Islam, Muslims, Islamophobia, Eid, halal, or Sharia, both pending and passed.</p>
 
-        <h3 class="corner-h3b">Voices &amp; resources</h3>
+        <h3 class="corner-h3b"><span class="essential">ESSENTIAL</span> Voices and Resources</h3>
         <div class="links">
-          <a class="btn outline" href="https://www.persecution.com" target="_blank" rel="noopener">The Voice of the Martyrs</a>
-          <a class="btn outline" href="https://www.youtube.com/@iamalitabrizi" target="_blank" rel="noopener">Ali Tabrizi on YouTube</a>
-          <a class="btn outline" href="https://www.youtube.com/@shamounian" target="_blank" rel="noopener">Sam Shamoun on YouTube</a>
-          <a class="btn outline" href="https://www.youtube.com/watch?v=gBIjURJmk6s" target="_blank" rel="noopener">William J. Federer: 68-Minute Primer on Islam &amp; the U.S.</a>
+          <a class="btn outline res-btn" href="https://www.persecution.com" target="_blank" rel="noopener">The Voice of the Martyrs</a>
+          <a class="btn outline res-btn" href="https://www.youtube.com/@iamalitabrizi" target="_blank" rel="noopener">Ali Tabrizi on YouTube</a>
+          <a class="btn outline res-btn" href="https://www.youtube.com/@shamounian" target="_blank" rel="noopener">Sam Shamoun on YouTube</a>
+          <a class="btn outline res-btn" href="https://www.youtube.com/watch?v=gBIjURJmk6s" target="_blank" rel="noopener">William J. Federer: 68-Minute Primer on Islam &amp; the U.S.</a>
         </div>
       </div>
     </div>
