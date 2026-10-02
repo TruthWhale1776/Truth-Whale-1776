@@ -359,6 +359,9 @@
   .watch-list li:first-child{border-top:none;}
   .watch-list .a-head{font-family:'Oswald', sans-serif; letter-spacing:.04em; color:var(--navy); font-size:14.5px;}
   .watch-list .a-status{color:var(--ink-soft); font-size:13px;}
+  .signed-box{background:#FBF3E6; border-color:#E6CFA3; border-left-color:var(--red);}
+  .signed-box .watch-tag{background:var(--red);}
+  .signed-box .watch-list li{border-top-color:#EAD9B8;}
   .sources-box{margin-top:12px; background:#fff; border:1px solid var(--rule); border-radius:3px;}
   .sources-box > summary{cursor:pointer; list-style:none; padding:10px 14px; font-family:'Oswald', sans-serif; font-size:13px; letter-spacing:.08em; text-transform:uppercase; color:var(--navy);}
   .sources-box > summary::-webkit-details-marker{display:none;}
@@ -786,6 +789,13 @@
           <ul id="alert-list" class="alert-list"></ul>
         </div>
 
+        <div class="watch-box signed-box">
+          <h3><span class="watch-tag">Signed into law</span> Enacted in 2026</h3>
+          <ul class="watch-list">
+            <li><span class="a-head">California &middot; <a href="https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=202520260AB2017" target="_blank" rel="noopener">AB 2017</a></span><sup class="fn"><a href="#src-9" aria-label="Source 9">9</a></sup><br>Eid State Holiday Act: adds Eid al-Fitr and Eid al-Adha as official California state holidays. State employees may take the days using existing vacation, leave or personal-holiday credit; public schools and community colleges may close by local agreement. Courts stay open; businesses are not required to close.<br><span class="a-status">Signed by Gov. Newsom, Sept. 27, 2026 &middot; Author: Asm. Matt Haney (D&ndash;San Francisco)</span></li>
+          </ul>
+        </div>
+
         <div class="watch-box">
           <h3><span class="watch-tag">Watching</span> Pending, no vote scheduled</h3>
           <ul class="watch-list">
@@ -875,6 +885,7 @@
         <li id="src-6">CAIR California press release, Aug. 31, 2026 (AB 2017 passed Legislature Aug. 30, 2026); California Legislative Information, AB 2017. <a href="https://www.cair.com/press_releases/cair-ca-welcomes-state-legislatures-passage-of-the-california-eid-state-holiday-act-urges-governors-signature/" target="_blank" rel="noopener">Link</a></li>
         <li id="src-7">American Greatness, &ldquo;Massachusetts Bill Creates Muslim Commission&hellip;,&rdquo; July 23, 2026 (S.2134). <a href="https://amgreatness.com/2026/07/23/massachusetts-bill-creates-muslim-commission-to-promote-islam-and-combat-islamophobia/" target="_blank" rel="noopener">Link</a></li>
         <li id="src-8">The Center Square, &ldquo;Virginia &lsquo;Islamophobia&rsquo; bill creates recording category, not new crime&rdquo; (SB 624 continued to 2027). <a href="https://www.thecentersquare.com/virginia/article_3e9eb751-0623-4590-9648-640fe79f7fc7.html" target="_blank" rel="noopener">Link</a></li>
+        <li id="src-9">The American Bazaar, &ldquo;California now recognizes Eid al-Fitr and Eid al-Adha as state holidays,&rdquo; Sept. 29, 2026 (AB 2017 signed Sept. 27, 2026); Fox News, &ldquo;Gavin Newsom signs Eid al-Fitr and Eid al-Adha into law as new California state holidays.&rdquo; <a href="https://americanbazaaronline.com/2026/09/29/california-now-recognizes-eid-al-fitr-and-eid-al-adha-as-state-holidays-489043/" target="_blank" rel="noopener">Link</a> &middot; <a href="https://www.foxnews.com/media/gavin-newsom-signs-eid-al-fitr-eid-al-adha-law-new-california-state-holidays" target="_blank" rel="noopener">Link</a></li>
       </ol>
     </details>
   </section>
@@ -1430,7 +1441,7 @@ function showState(abbr, party){
 </script>
 <script>
   (function(){
-    var ALERTS = [{"state": "California", "bill": "AB 2017", "title": "Eid State Holiday Act: adds Eid al-Fitr and Eid al-Adha as official state holidays", "status": "Passed Legislature Aug. 30, 2026; awaiting Gov. Newsom's signature or veto", "actionBy": "2026-09-30", "actionLabel": "Governor's deadline", "url": "https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=202520260AB2017", "fn": 6}];
+    var ALERTS = [];
     var DAY = 86400000, now = new Date(); now.setHours(0,0,0,0);
     function esc(t){ var d=document.createElement('div'); d.textContent=t; return d.innerHTML; }
     var list = document.getElementById('alert-list'), shown = 0;
