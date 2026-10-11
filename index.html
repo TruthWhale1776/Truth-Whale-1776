@@ -1193,28 +1193,85 @@
           80:['Rain showers','\uD83C\uDF26\uFE0F'],81:['Rain showers','\uD83C\uDF27\uFE0F'],82:['Heavy showers','\uD83C\uDF27\uFE0F'],85:['Snow showers','\uD83C\uDF28\uFE0F'],86:['Snow showers','\u2744\uFE0F'],
           95:['Thunderstorms','\u26C8\uFE0F'],96:['Thunderstorms, hail','\u26C8\uFE0F'],99:['Thunderstorms, hail','\u26C8\uFE0F']};
         function w(c){ return W[c] || ['\u2014','\u26C5']; }
-        var url = 'https://api.open-meteo.com/v1/forecast?latitude=42.1487&longitude=-72.6079' +
-          '&current=temperature_2m,apparent_temperature,relative_humidity_2m,weather_code,wind_speed_10m' +
-          '&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max' +
-          '&temperature_unit=fahrenheit&wind_speed_unit=mph&timezone=America%2FNew_York&forecast_days=6';
-        fetch(url).then(function(r){ return r.json(); }).then(function(d){
-          var c = d.current, now = w(c.weather_code);
-          document.getElementById('wx-temp').textContent = Math.round(c.temperature_2m);
-          document.getElementById('wx-icon').textContent = now[1];
-          document.getElementById('wx-cond').textContent = now[0];
-          document.getElementById('wx-extra').textContent = 'Feels like ' + Math.round(c.apparent_temperature) + '\u00B0 \u00B7 Wind ' + Math.round(c.wind_speed_10m) + ' mph \u00B7 Humidity ' + c.relative_humidity_2m + '%';
-          document.getElementById('wx-updated').textContent = 'Updated ' + new Date().toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'});
-          var dd = d.daily, html = '';
-          for (var k = 1; k < dd.time.length; k++){
-            var day = new Date(dd.time[k] + 'T12:00:00').toLocaleDateString('en-US',{weekday:'short'}), x = w(dd.weather_code[k]);
-            html += '<div class="wx-day"><div class="wx-dn">' + day + '</div><div class="wx-di">' + x[1] + '</div>' +
-              '<div class="wx-hl"><b>' + Math.round(dd.temperature_2m_max[k]) + '\u00B0</b> ' + Math.round(dd.temperature_2m_min[k]) + '\u00B0</div>' +
-              '<div class="wx-pp">' + (dd.precipitation_probability_max[k] != null ? '\uD83D\uDCA7 ' + dd.precipitation_probability_max[k] + '%' : '') + '</div></div>';
-          }
-          document.getElementById('wx-days').innerHTML = html;
-        }).catch(function(){
-          document.getElementById('wx-cond').innerHTML = 'Weather is unavailable right now. <a href="https://forecast.weather.gov/MapClick.php?lat=42.1487&lon=-72.6079" target="_blank" rel="noopener">See the National Weather Service forecast</a>.';
-        });
+        function $(id){ return document.getElementById(id); }
+        function stamp(src){ $('wx-updated').textContent = 'Updated ' + new Date().toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'}) + ' · ' + src; }
+        function getJSON(u){
+          var ctl = window.AbortController ? new AbortController() : null;
+          var t = setTimeout(function(){ if (ctl) ctl.abort(); }, 10000);
+          return fetch(u, ctl ? {signal: ctl.signal, headers:{'Accept':'application/json'}} : {}).then(function(r){
+            clearTimeout(t); if (!r.ok) throw new Error('HTTP ' + r.status); return r.json();
+          });
+        }
+        function dayCard(name, icon, hi, lo, pp){
+          return '<div class="wx-day"><div class="wx-dn">' + name + '</div><div class="wx-di">' + icon + '</div>' +
+            '<div class="wx-hl"><b>' + hi + '°</b> ' + (lo == null ? '' : lo + '°') + '</div>' +
+            '<div class="wx-pp">' + (pp != null ? '💧 ' + pp + '%' : '') + '</div></div>';
+        }
+        // Source 1: Open-Meteo
+        function openMeteo(){
+          var url = 'https://api.open-meteo.com/v1/forecast?latitude=42.1487&longitude=-72.6079' +
+            '&current=temperature_2m,apparent_temperature,relative_humidity_2m,weather_code,wind_speed_10m' +
+            '&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max' +
+            '&temperature_unit=fahrenheit&wind_speed_unit=mph&timezone=America%2FNew_York&forecast_days=6';
+          return getJSON(url).then(function(d){
+            if (!d || !d.current || d.current.temperature_2m == null) throw new Error('no data');
+            var c = d.current, now = w(c.weather_code);
+            $('wx-temp').textContent = Math.round(c.temperature_2m);
+            $('wx-icon').textContent = now[1];
+            $('wx-cond').textContent = now[0];
+            $('wx-extra').textContent = 'Feels like ' + Math.round(c.apparent_temperature) + '° · Wind ' + Math.round(c.wind_speed_10m) + ' mph · Humidity ' + c.relative_humidity_2m + '%';
+            var dd = d.daily, html = '';
+            for (var k = 1; k < dd.time.length; k++){
+              var day = new Date(dd.time[k] + 'T12:00:00').toLocaleDateString('en-US',{weekday:'short'}), x = w(dd.weather_code[k]);
+              html += dayCard(day, x[1], Math.round(dd.temperature_2m_max[k]), Math.round(dd.temperature_2m_min[k]), dd.precipitation_probability_max[k]);
+            }
+            $('wx-days').innerHTML = html;
+            stamp('Open-Meteo');
+          });
+        }
+        // Source 2 (backup): National Weather Service
+        function nwsIcon(t){
+          t = (t || '').toLowerCase();
+          if (/thunder/.test(t)) return '⛈️';
+          if (/snow|flurr|sleet/.test(t)) return '🌨️';
+          if (/rain|shower|drizzle/.test(t)) return '🌧️';
+          if (/fog|haze/.test(t)) return '🌫️';
+          if (/partly|mostly sunny|mostly clear/.test(t)) return '⛅';
+          if (/cloud|overcast/.test(t)) return '☁️';
+          if (/sunny|clear/.test(t)) return '☀️';
+          return '⛅';
+        }
+        function nws(){
+          return getJSON('https://api.weather.gov/points/42.1487,-72.6079').then(function(pt){
+            var pr = pt.properties;
+            return Promise.all([getJSON(pr.forecastHourly), getJSON(pr.forecast)]);
+          }).then(function(res){
+            var h = res[0].properties.periods[0], days = res[1].properties.periods;
+            $('wx-temp').textContent = Math.round(h.temperature);
+            $('wx-icon').textContent = nwsIcon(h.shortForecast);
+            $('wx-cond').textContent = h.shortForecast;
+            var hum = h.relativeHumidity && h.relativeHumidity.value != null ? ' · Humidity ' + h.relativeHumidity.value + '%' : '';
+            $('wx-extra').textContent = 'Wind ' + h.windSpeed + ' ' + (h.windDirection || '') + hum;
+            var html = '', n = 0;
+            for (var k = 0; k < days.length && n < 5; k++){
+              var p = days[k]; if (!p.isDaytime) continue;
+              if (n === 0 && new Date(p.startTime).toDateString() === new Date().toDateString()) continue;
+              var lo = days[k+1] && !days[k+1].isDaytime ? days[k+1].temperature : null;
+              var pp = p.probabilityOfPrecipitation ? p.probabilityOfPrecipitation.value : null;
+              html += dayCard(new Date(p.startTime).toLocaleDateString('en-US',{weekday:'short'}), nwsIcon(p.shortForecast), p.temperature, lo, pp);
+              n++;
+            }
+            $('wx-days').innerHTML = html;
+            stamp('National Weather Service');
+          });
+        }
+        function load(){
+          openMeteo().catch(nws).catch(function(){
+            $('wx-cond').innerHTML = 'Weather is unavailable right now. <a href="https://forecast.weather.gov/MapClick.php?lat=42.1487&lon=-72.6079" target="_blank" rel="noopener">See the National Weather Service forecast</a>.';
+          });
+        }
+        load();
+        setInterval(load, 30 * 60 * 1000);
       })();
     </script>
   </section>
