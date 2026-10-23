@@ -358,6 +358,10 @@
   .watch-list li:first-child{border-top:none;}
   .watch-list .a-head{font-family:'Oswald', sans-serif; letter-spacing:.04em; color:var(--navy); font-size:14.5px;}
   .watch-list .a-status{color:var(--ink-soft); font-size:13px;}
+  .signed-box{background:#FBF3E6; border-color:#E6CFA3; border-left-color:var(--red);}
+  .signed-box .watch-tag{background:var(--red);}
+  .signed-box .watch-list li{border-top-color:#EAD9B8;}
+  .checked-note{font-size:12.5px; color:var(--ink-soft); font-style:italic; margin:0 0 14px;}
   .sources-box{margin-top:12px; background:#fff; border:1px solid var(--rule); border-radius:3px;}
   .sources-box > summary{cursor:pointer; list-style:none; padding:10px 14px; font-family:'Oswald', sans-serif; font-size:13px; letter-spacing:.08em; text-transform:uppercase; color:var(--navy);}
   .sources-box > summary::-webkit-details-marker{display:none;}
@@ -495,9 +499,11 @@
 <nav class="gazette-nav">
   <ul>
     <li><a href="#broadcasts">Broadcasts</a></li>
+    <li><a href="#show-notes">Show Notes</a></li>
     <li><a href="#founding-docs">Founding Docs</a></li>
     <li><a href="#commandments">Ten Commandments</a></li>
     <li><a href="#islam-corner">Islamification Corner</a></li>
+    <li><a href="#faith-corner">Faith Corner</a></li>
     <li><a href="#civic-desk">Civic Desk</a></li>
     <li><a href="#shop">Shop</a></li>
     <li><a href="#voices">News &amp; Voices</a></li>
@@ -542,6 +548,22 @@
         <svg class="eagle" viewBox="0 0 24 24"><path d="M12 3c.6 1 1 2 1 3 3-2.5 6-3 10-2-3 1.5-5.5 3-7 5 3 0 5.5 1 8 3-3.5.5-6 .3-8-1 .5 2 .3 4-1 6-1-1.5-1.8-3-2-4.5-.4 2-1 3.7-2 5-1-1.3-1.6-3-2-5-.2 1.5-1 3-2 4.5-1.3-2-1.5-4-1-6-2 1.3-4.5 1.5-8 1 2.5-2 5-3 8-3-1.5-2-4-3.5-7-5 4-1 7-.5 10 2 0-1 .4-2 1-3z"/></svg>
         OAN
       </a>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- SHOW NOTES & DOWNLOADS -->
+  <section id="show-notes">
+    <h2 class="section-head"><svg class="eagle" viewBox="0 0 24 24"><path d="M12 3c.6 1 1 2 1 3 3-2.5 6-3 10-2-3 1.5-5.5 3-7 5 3 0 5.5 1 8 3-3.5.5-6 .3-8-1 .5 2 .3 4-1 6-1-1.5-1.8-3-2-4.5-.4 2-1 3.7-2 5-1-1.3-1.6-3-2-5-.2 1.5-1 3-2 4.5-1.3-2-1.5-4-1-6-2 1.3-4.5 1.5-8 1 2.5-2 5-3 8-3-1.5-2-4-3.5-7-5 4-1 7-.5 10 2 0-1 .4-2 1-3z"/></svg> Show Notes &amp; Downloads</h2>
+    <p class="section-sub">Free reading to go with the broadcasts &mdash; click to read, or save it to your device.</p>
+    <div style="border:1px solid rgba(0,0,0,.15); padding:16px 18px; margin:14px 0; max-width:640px;">
+      <h3 style="font-family:'Oswald', sans-serif; font-size:15px; letter-spacing:.08em; text-transform:uppercase; color:var(--red-2); margin:0 0 6px;">Data Centers 101: Why We Need Them, and What China Is Doing</h3>
+      <p style="margin:0 0 12px;">What a data center is, why AI depends on them, and how America&rsquo;s private-sector buildout stacks up against China&rsquo;s state-run plan. 4 pages, PDF, October 2026.</p>
+      <div style="display:flex; flex-wrap:wrap; gap:10px;">
+        <a class="btn" href="/Data_Centers_101.pdf" target="_blank" rel="noopener"><svg class="eagle" viewBox="0 0 24 24"><path d="M12 3c.6 1 1 2 1 3 3-2.5 6-3 10-2-3 1.5-5.5 3-7 5 3 0 5.5 1 8 3-3.5.5-6 .3-8-1 .5 2 .3 4-1 6-1-1.5-1.8-3-2-4.5-.4 2-1 3.7-2 5-1-1.3-1.6-3-2-5-.2 1.5-1 3-2 4.5-1.3-2-1.5-4-1-6-2 1.3-4.5 1.5-8 1 2.5-2 5-3 8-3-1.5-2-4-3.5-7-5 4-1 7-.5 10 2 0-1 .4-2 1-3z"/></svg> Read the PDF</a>
+        <a class="btn outline" href="/Data_Centers_101.pdf" download="Data_Centers_101.pdf"><svg class="eagle" viewBox="0 0 24 24"><path d="M12 3c.6 1 1 2 1 3 3-2.5 6-3 10-2-3 1.5-5.5 3-7 5 3 0 5.5 1 8 3-3.5.5-6 .3-8-1 .5 2 .3 4-1 6-1-1.5-1.8-3-2-4.5-.4 2-1 3.7-2 5-1-1.3-1.6-3-2-5-.2 1.5-1 3-2 4.5-1.3-2-1.5-4-1-6-2 1.3-4.5 1.5-8 1 2.5-2 5-3 8-3-1.5-2-4-3.5-7-5 4-1 7-.5 10 2 0-1 .4-2 1-3z"/></svg> Download</a>
+      </div>
     </div>
   </section>
 
@@ -786,7 +808,7 @@
     <div class="corner-grid">
       <div class="corner-box">
         <h3>Christians killed for their faith</h3>
-        <p class="corner-note">Oct. 1, 2024 &ndash; Sept. 30, 2025 &middot; highest first</p>
+        <p class="corner-note">Oct. 1, 2024 &ndash; Sept. 30, 2025 &middot; highest first &middot; latest figures available; next update January 2027</p>
         <ol class="kill-list">
           <li class="kill-row">
             <span class="kill-n">3,490</span>
@@ -869,13 +891,23 @@
           <ul id="alert-list" class="alert-list"></ul>
         </div>
 
+        <div class="watch-box signed-box">
+          <h3><span class="watch-tag">Signed into law</span> Enacted</h3>
+          <ul class="watch-list">
+            <li><span class="a-head">California &middot; <a href="https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=202520260AB2017" target="_blank" rel="noopener">AB 2017</a></span><sup class="fn"><a href="#src-6" aria-label="Source 6">6</a></sup><br>Eid State Holiday Act: adds Eid al-Fitr and Eid al-Adha to the state&rsquo;s holidays; state and school employees may take the days with leave time, and schools may close by local agreement.<br><span class="a-status">Signed by Gov. Newsom, Sept. 27, 2026</span></li>
+            <li><span class="a-head">Washington &middot; <a href="https://app.leg.wa.gov/billsummary?BillNumber=5106&amp;Year=2025" target="_blank" rel="noopener">SB 5106</a></span><sup class="fn"><a href="#src-9" aria-label="Source 9">9</a></sup><br>Adds Eid al-Fitr and Eid al-Adha to the state&rsquo;s list of recognized (unpaid) holidays.<br><span class="a-status">Signed by Gov. Ferguson, April 2025</span></li>
+          </ul>
+        </div>
+
         <div class="watch-box">
           <h3><span class="watch-tag">Watching</span> Pending, no vote scheduled</h3>
           <ul class="watch-list">
-            <li><span class="a-head">Massachusetts &middot; <a href="https://malegislature.gov/Bills/194/S2134" target="_blank" rel="noopener">S.2134</a></span><sup class="fn"><a href="#src-7" aria-label="Source 7">7</a></sup><br>Would create a permanent 11-member state commission on Muslim affairs, including combating &ldquo;Islamophobia&rdquo; and advising on legislation.<br><span class="a-status">In Senate Ways &amp; Means (as of July 2026)</span></li>
+            <li><span class="a-head">Massachusetts &middot; <a href="https://malegislature.gov/Bills/194/S2134" target="_blank" rel="noopener">S.2134</a></span><sup class="fn"><a href="#src-7" aria-label="Source 7">7</a></sup><br>Would create a permanent 11-member state commission on Muslim affairs, including combating &ldquo;Islamophobia&rdquo; and advising on legislation.<br><span class="a-status">Still in Senate Ways &amp; Means; no action since Jan. 12, 2026. The 2025&ndash;26 session ends in early January 2027.</span></li>
+            <li><span class="a-head">New Jersey &middot; <a href="https://legiscan.com/NJ/bill/A1146/2026" target="_blank" rel="noopener">A1146</a></span><sup class="fn"><a href="#src-10" aria-label="Source 10">10</a></sup><br>Would adopt a state definition of &ldquo;Islamophobia&rdquo; that officials and police must consider when judging anti-Muslim intent.<br><span class="a-status">In Assembly State &amp; Local Government Committee since Jan. 13, 2026</span></li>
             <li><span class="a-head">Virginia &middot; <a href="https://legiscan.com/VA/bill/SB624/2026" target="_blank" rel="noopener">SB 624</a></span><sup class="fn"><a href="#src-8" aria-label="Source 8">8</a></sup><br>Would define &ldquo;Islamophobia&rdquo; for assault-and-battery cases and hate-crime reporting.<br><span class="a-status">Continued to the 2027 session</span></li>
           </ul>
         </div>
+        <p class="checked-note">Bill statuses last checked Oct. 23, 2026.</p>
 
         <label class="corner-label" for="leg-state">Search any state&rsquo;s bills</label>
         <div class="corner-pick">
@@ -955,10 +987,59 @@
         <li id="src-3">Open Doors, World Watch List 2026 Country Dossier: Democratic Republic of the Congo (339 killed; ADF). <a href="https://opendoors.org.nz/wp-content/uploads/2026/01/Open-Doors-World-Watch-List-2026-Congo-DRC-Country-Dossier.pdf" target="_blank" rel="noopener">Link</a></li>
         <li id="src-4">Open Doors, World Watch List 2026 Country Dossier: Sudan (23 killed; RSF and allied militias). <a href="https://opendoors.org.nz/wp-content/uploads/2026/01/Open-Doors-World-Watch-List-2026-Sudan-Country-Dossier.pdf" target="_blank" rel="noopener">Link</a></li>
         <li id="src-5">Open Doors Australia, World Watch List 2026 (country rankings and profiles). <a href="https://www.opendoors.org.au/world-watch-list/" target="_blank" rel="noopener">Link</a></li>
-        <li id="src-6">CAIR California press release, Aug. 31, 2026 (AB 2017 passed Legislature Aug. 30, 2026); California Legislative Information, AB 2017. <a href="https://www.cair.com/press_releases/cair-ca-welcomes-state-legislatures-passage-of-the-california-eid-state-holiday-act-urges-governors-signature/" target="_blank" rel="noopener">Link</a></li>
-        <li id="src-7">American Greatness, &ldquo;Massachusetts Bill Creates Muslim Commission&hellip;,&rdquo; July 23, 2026 (S.2134). <a href="https://amgreatness.com/2026/07/23/massachusetts-bill-creates-muslim-commission-to-promote-islam-and-combat-islamophobia/" target="_blank" rel="noopener">Link</a></li>
+        <li id="src-6">Office of Gov. Gavin Newsom, &ldquo;Legislative update 9.27.2026&rdquo; (AB 2017 signed); CAIR-CA press release, Sept. 28, 2026. <a href="https://www.gov.ca.gov/2026/09/27/governor-newsom-issues-legislative-update-9-27-2026/" target="_blank" rel="noopener">Link</a></li>
+        <li id="src-7">Massachusetts Legislature, Bill S.2134 history (referred to Senate Ways and Means, Jan. 12, 2026); American Greatness, July 23, 2026. <a href="https://malegislature.gov/Bills/194/S2134" target="_blank" rel="noopener">Link</a></li>
         <li id="src-8">The Center Square, &ldquo;Virginia &lsquo;Islamophobia&rsquo; bill creates recording category, not new crime&rdquo; (SB 624 continued to 2027). <a href="https://www.thecentersquare.com/virginia/article_3e9eb751-0623-4590-9648-640fe79f7fc7.html" target="_blank" rel="noopener">Link</a></li>
+        <li id="src-9">Washington State Standard, &ldquo;New Washington law recognizes two Islamic holidays,&rdquo; April 9, 2025 (SB 5106). <a href="https://washingtonstatestandard.com/2025/04/09/new-washington-law-recognizes-two-islamic-holidays/" target="_blank" rel="noopener">Link</a></li>
+        <li id="src-10">LegiScan, New Jersey A1146 (2026 session), text and status. <a href="https://legiscan.com/NJ/text/A1146/2026" target="_blank" rel="noopener">Link</a></li>
       </ol>
+    </details>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- FAITH CORNER -->
+  <section id="faith-corner">
+    <h2 class="section-head"><svg class="eagle" viewBox="0 0 24 24"><path d="M10.5 2h3v6h6v3h-6v11h-3V11h-6V8h6z"/></svg> Faith Corner</h2>
+    <p class="section-sub">Scripture, good books, and the historic confessions of the faith.</p>
+    <div class="card-grid">
+
+      <div class="shop-card">
+        <h3>Bible Hub</h3>
+        <p>Search the Scriptures in dozens of translations, with commentaries, interlinear, and Strong's concordance.</p>
+        <div class="links">
+          <a class="btn outline" href="https://biblehub.com" target="_blank" rel="noopener">Open Bible Hub</a>
+          <a class="btn outline" href="https://apps.apple.com/us/app/id1090228108" target="_blank" rel="noopener">Bible Hub app (iPhone)</a>
+        </div>
+      </div>
+
+      <div class="shop-card">
+        <h3>Christian books</h3>
+        <p>New and used Bibles, commentaries, theology, and classics for the shelf.</p>
+        <div class="links">
+          <a class="btn outline" href="https://www.christianbook.com" target="_blank" rel="noopener">Christian Book Distributors</a>
+          <a class="btn outline" href="https://www.thriftbooks.com" target="_blank" rel="noopener">ThriftBooks</a>
+        </div>
+      </div>
+
+      <div class="shop-card">
+        <h3>Confessions &amp; creeds</h3>
+        <p>What the Church has confessed &mdash; the ancient creed and the Reformed standard.</p>
+        <div class="links">
+          <a class="btn outline" href="https://www.opc.org/wcf.html" target="_blank" rel="noopener">Westminster Confession of Faith</a>
+          <a class="btn outline" href="https://www.ccel.org/creeds/apostles.creed.html" target="_blank" rel="noopener">The Apostles' Creed</a>
+        </div>
+      </div>
+
+    </div>
+
+    <details class="doc-box" style="margin-top:18px;">
+      <summary>Read the Apostles' Creed</summary>
+      <div class="doc-text">
+<p>I believe in God the Father Almighty, Maker of heaven and earth.</p>
+<p>And in Jesus Christ his only Son our Lord; who was conceived by the Holy Ghost, born of the Virgin Mary; suffered under Pontius Pilate, was crucified, dead, and buried; he descended into hell; the third day he rose again from the dead; he ascended into heaven, and sitteth on the right hand of God the Father Almighty; from thence he shall come to judge the quick and the dead.</p>
+<p>I believe in the Holy Ghost; the holy catholic Church; the communion of saints; the forgiveness of sins; the resurrection of the body; and the life everlasting. Amen.</p>
+      </div>
     </details>
   </section>
 
@@ -1583,7 +1664,7 @@ function showState(abbr, party){
 </script>
 <script>
   (function(){
-    var ALERTS = [{"state": "California", "bill": "AB 2017", "title": "Eid State Holiday Act: adds Eid al-Fitr and Eid al-Adha as official state holidays", "status": "Passed Legislature Aug. 30, 2026; awaiting Gov. Newsom's signature or veto", "actionBy": "2026-09-30", "actionLabel": "Governor's deadline", "url": "https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=202520260AB2017", "fn": 6}];
+    var ALERTS = [];
     var DAY = 86400000, now = new Date(); now.setHours(0,0,0,0);
     function esc(t){ var d=document.createElement('div'); d.textContent=t; return d.innerHTML; }
     var list = document.getElementById('alert-list'), shown = 0;
